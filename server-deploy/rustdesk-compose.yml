@@ -1,0 +1,27 @@
+# 可选：在同一台阿里云 VPS 上自建免费私有 RustDesk 中继服务器（用于手机在 Windows 锁屏界面远程输入开机密码）
+# 启动命令：
+#   VPS_IP=YOUR_SERVER_IP docker compose -f rustdesk-compose.yml up -d
+# 阿里云安全组需放行：TCP 21115-21119 与 UDP 21116
+# 启动后查看公钥：cat ./rustdesk-data/id_ed25519.pub
+# 将 ID 服务器填为你的 VPS 公网 IP，Key 填为上述公钥，即可 0 成本高速远程输开机密码。
+
+services:
+  hbbs:
+    container_name: rustdesk-hbbs
+    image: rustdesk/rustdesk-server:latest
+    command: hbbs
+    volumes:
+      - ./rustdesk-data:/root
+    network_mode: host
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+  hbbr:
+    container_name: rustdesk-hbbr
+    image: rustdesk/rustdesk-server:latest
+    command: hbbr
+    volumes:
+      - ./rustdesk-data:/root
+    network_mode: host
+    restart: unless-stopped

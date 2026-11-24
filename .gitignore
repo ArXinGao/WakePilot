@@ -1,0 +1,36 @@
+# Local & Private Files (NEVER push personal paths, keys, or thesis to public GitHub)
+thesis/
+*.pem
+*.key
+*.crt
+*.jks
+*.keystore
+wakepilot-agent.json
+
+# Build Outputs (attach compiled binaries to GitHub Releases instead of Git history)
+dist/
+server-deploy/wakepilot-relay-linux-amd64
+server-deploy/rustdesk-data/
+
+# Android / Gradle
+android-app/local.properties
+android-app/.gradle/
+android-app/.idea/
+android-app/build/
+android-app/app/build/
+android-app/captures/
+*.iml
+
+# Go
+*.exe
+*.out
+*.test
+
+# ESP32 / PlatformIO
+esp32-sentinel/.pio/
+esp32-sentinel/.vscode/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WakePilot</string>
+    <string name="widget_label">WakePilot 一键远程开机</string>
+    <string name="tile_label">远程开机</string>
+</resources>
